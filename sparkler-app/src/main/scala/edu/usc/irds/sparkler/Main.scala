@@ -20,6 +20,7 @@ package edu.usc.irds.sparkler
 import edu.usc.irds.sparkler.base.Loggable
 import edu.usc.irds.sparkler.pipeline.Crawler
 import edu.usc.irds.sparkler.service.Injector
+import edu.usc.irds.sparkler.pipeline.ReaderSeg
 
 /**
   * Created by thammegr on 6/7/16.
@@ -30,9 +31,11 @@ object Main extends Loggable {
 
   val subCommands = Map[String, (Class[_], String)](
     "inject" -> (classOf[Injector], "Inject (seed) URLS to crawldb"),
-    "crawl" -> (classOf[Crawler], "Run crawl pipeline for several iterations")
+    "crawl" -> (classOf[Crawler], "Run crawl pipeline for several iterations"),
+    "readseg" -> (classOf[ReaderSeg], "run reader to create webpage source dumps")
   )
 
+  //  ToDo: why didn't we use switch case
   def main(args: Array[String]): Unit ={
     if (args.length == 0 || HELP_CMD.equals(args(0).toLowerCase)){
       println("Sub Commands:")

@@ -18,12 +18,12 @@
 package edu.usc.irds.sparkler.pipeline
 
 
-import edu.usc.irds.sparkler.{Constants, CrawlDbRDD, SparklerConfiguration}
 import edu.usc.irds.sparkler.base.{CliTool, Loggable}
 import edu.usc.irds.sparkler.model.ResourceStatus._
 import edu.usc.irds.sparkler.model.{CrawlData, Resource, ResourceStatus, SparklerJob}
 import edu.usc.irds.sparkler.solr.{SolrStatusUpdate, SolrUpsert}
 import edu.usc.irds.sparkler.util.{JobUtil, NutchBridge}
+import edu.usc.irds.sparkler.{Constants, CrawlDbRDD, SparklerConfiguration}
 import org.apache.hadoop.conf.Configuration
 import org.apache.hadoop.io.Text
 import org.apache.hadoop.mapred.SequenceFileOutputFormat
@@ -240,6 +240,10 @@ object Crawler extends Loggable with Serializable{
   }
 
   def main(args: Array[String]): Unit = {
-    new Crawler().run(args)
+    new Crawler()
   }
+}
+
+object Test extends App {
+//  new Crawler().read("/home/rohith/Projects/Personal/sparkler/j1/20180112004126/")
 }
